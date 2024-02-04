@@ -1,7 +1,0 @@
-{
-  "name": "pachangueo",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
