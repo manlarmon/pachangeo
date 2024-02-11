@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'Equipo',
     loadChildren: () => import('./views/equipo/equipo.module').then(m => m.EquipoPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./views/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
 
 ];
 

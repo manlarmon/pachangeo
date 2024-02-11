@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'Perfil',
+    loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+  },
 ];
 
 @NgModule({
