@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilPage implements OnInit {
 
+  title: string = "Perfil"
+
   constructor() { }
 
   ngOnInit() {

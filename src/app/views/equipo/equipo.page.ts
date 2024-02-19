@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipoPage implements OnInit {
 
-  title: String = "Equipo";
+  title: string = "Equipo";
 
   constructor() { }
 

@@ -4,22 +4,20 @@
 
     <ion-menu side="start" menuId="custom" contentId="main">
 
-      <ion-header>
+      <ion-header class="side-nav">
         <ion-toolbar color="tertiary">
           <div class="toolbar-content">
             <ion-title>Menú</ion-title>
-            <ion-img slot="end" [src]="pachangeoIcon" style=" width: 70px; height: 70px;"></ion-img>
+            <ion-img slot="end" [src]="pachangeoIcon" style=" width: 80px; height: 80px;"></ion-img>
           </div>
 
         </ion-toolbar>
       </ion-header>
 
-      <ion-content class="ion-padding">
-
-        <ion-list lines="true">
-
+      <ion-content>
+        <ion-list lines="full">
           <ion-menu-toggle [routerLink]="['/Inicio']">
-            <ion-item button="true">
+            <ion-item button="true" detail="">
               <ion-icon name="home"></ion-icon>
               <ion-label class="label-list-item">Inicio</ion-label>
             </ion-item>
@@ -29,28 +27,30 @@
           <ion-menu-toggle [routerLink]="['/Equipo']">
             <ion-item button="true" detail="">
               <ion-icon name="shield"></ion-icon>
-              <ion-label class="label-list-item">Inicio</ion-label>
+              <ion-label class="label-list-item">Equipo</ion-label>
             </ion-item>
           </ion-menu-toggle>
 
           <ion-menu-toggle>
             <ion-item button="true" detail="">
-              <ion-icon name="home"></ion-icon>
-              <ion-label class="label-list-item">Inicio</ion-label>
+              <ion-icon name="send"></ion-icon>
+              <ion-label class="label-list-item">Solicitudes</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-menu-toggle>
-            <ion-item button="true">
-              <ion-icon name="home"></ion-icon>
-              <ion-label class="label-list-item">Inicio</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
 
+          <ion-menu-toggle>
+            <ion-item button="true" detail="">
+              <ion-icon name="settings"></ion-icon>
+              <ion-label class="label-list-item">Ajustes</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
       </ion-content>
+      <ion-img [src]="jugador"></ion-img>
     </ion-menu>
 
-    <div class="ion-page" id="main">
+    <div class=" ion-page" id="main">
 
       <ion-router-outlet></ion-router-outlet>
 

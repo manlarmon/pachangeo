@@ -9,11 +9,10 @@ const routes: Routes = [
     component: PerfilPage
   },
 
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PerfilPageRoutingModule { }
+export class PerfilPageRoutingModule {}

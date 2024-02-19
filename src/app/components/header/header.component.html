@@ -1,19 +1,26 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar [color]="color">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
 
+    <!-- Header de Inicio y Equipo (Predeterminado) -->
+    <ion-buttons *ngIf="title != 'Perfil'" slot="start">
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
     <ion-title>{{title}}</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons *ngIf="title != 'Perfil'" slot="end">
       <ion-button [routerLink]="['Perfil']">
         <ion-icon name="person-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
 
+    <!-- Header de Perfil -->
+    <ion-buttons *ngIf="title == 'Perfil'" slot="start">
+      <ion-back-button defaultHref={{title}}></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="title == 'Perfil'" slot="end">
+      <ion-button routerLink="/Inicio">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<!-- <ion-buttons *ngIf="title != 'Inicio'" slot="start">
-      <ion-back-button defaultHref="home" text=""></ion-back-button>
-    </ion-buttons> -->

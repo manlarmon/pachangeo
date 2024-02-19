@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   pachangeoIcon = 'assets/icon/pachangeoIcon.png';
+  jugador = 'assets/icon/jugador.png';
 
   constructor() { }
 }

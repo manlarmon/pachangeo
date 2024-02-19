@@ -8,18 +8,22 @@ ion-icon {
 }
 
 ion-menu::part(backdrop) {
-  background-color: rgba(0, 255, 174, 0.571);
+  background-color: rgba(255, 255, 255, 0.571);
 }
 
 ion-menu::part(container) {
   border-radius: 0 20px 20px 0;
-  box-shadow: 4px 0px 16px rgba(0, 255, 174, 0.705);
+  box-shadow: 4px 0px 16px rgba(177, 255, 161, 0.858);
 }
 
 .toolbar-content {
   display: flex;
-  height: 20px;
+  height: 80px;
   flex-direction: row;
   align-content: center;
   align-items: center;
+}
+
+ion-header .side-nav {
+  border-bottom: none !important;
 }
