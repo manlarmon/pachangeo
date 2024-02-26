@@ -15,6 +15,18 @@ const routes: Routes = [
     path: 'Equipo',
     loadChildren: () => import('./views/equipo/equipo.module').then(m => m.EquipoPageModule)
   },
+  {
+    path: 'ajustes',
+    loadChildren: () => import('./views/ajustes/ajustes.module').then( m => m.AjustesPageModule)
+  },
+  {
+    path: 'solicitudes',
+    loadChildren: () => import('./views/solicitudes/solicitudes.module').then( m => m.SolicitudesPageModule)
+  },
+  {
+    path: 'buscador',
+    loadChildren: () => import('./views/buscador/buscador.module').then( m => m.BuscadorPageModule)
+  },
 
 ];
 

@@ -14,6 +14,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
     EquipoPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [EquipoPage]
+  declarations: []
 })
 export class EquipoPageModule {}

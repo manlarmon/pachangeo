@@ -15,6 +15,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
     HomePageRoutingModule,
     ComponentsModule
   ],
-  declarations: [HomePage]
+  declarations: []
 })
 export class HomePageModule { }

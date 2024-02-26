@@ -10,7 +10,7 @@ import { PerfilPage } from './perfil.page';
 import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
-    declarations: [PerfilPage],
+    declarations: [],
     imports: [
         CommonModule,
         FormsModule,

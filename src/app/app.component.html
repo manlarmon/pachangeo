@@ -15,7 +15,7 @@
       </ion-header>
 
       <ion-content>
-        <ion-list lines="full">
+        <ion-list lines="none">
           <ion-menu-toggle [routerLink]="['/Inicio']">
             <ion-item button="true" detail="">
               <ion-icon name="home"></ion-icon>
@@ -31,15 +31,34 @@
             </ion-item>
           </ion-menu-toggle>
 
-          <ion-menu-toggle>
-            <ion-item button="true" detail="">
-              <ion-icon name="send"></ion-icon>
-              <ion-label class="label-list-item">Solicitudes</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+
+          <ion-accordion-group>
+            <ion-accordion toggleIcon="caret-down-circle" value="first">
+              <ion-item class="accordion-yellow" lines="full" slot="header" button="true">
+                <ion-icon class="accordion-yellow" name="send"></ion-icon>
+                <ion-label class="label-list-item">Solicitudes</ion-label>
+              </ion-item>
+              <div slot="content" style="padding-left: 12%; ">
+                <ion-menu-toggle>
+                  <ion-item lines="none" button="true" detail="">
+                    <ion-icon name="search"></ion-icon>
+                    <ion-label class="label-list-item ">Buscador</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </div>
+              <div slot="content" style="padding-left: 12%;">
+                <ion-menu-toggle>
+                  <ion-item button="true" detail="">
+                    <ion-icon name="albums"></ion-icon>
+                    <ion-label class="label-list-item ">Mis Solicitudes</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
 
           <ion-menu-toggle>
-            <ion-item button="true" detail="">
+            <ion-item button=" true" detail="">
               <ion-icon name="settings"></ion-icon>
               <ion-label class="label-list-item">Ajustes</ion-label>
             </ion-item>
