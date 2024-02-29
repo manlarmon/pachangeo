@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BuscadorPageRoutingModule } from './buscador-routing.module';
+import { SinEquipoPageRoutingModule } from './sin-equipo-routing.module';
 
-import { BuscadorPage } from './buscador.page';
+import { SinEquipoPage } from './sin-equipo.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BuscadorPageRoutingModule
+    SinEquipoPageRoutingModule
   ],
-  declarations: [
-    
-  ]
+  declarations: [SinEquipoPage]
 })
-export class BuscadorPageModule {}
+export class SinEquipoPageModule {}

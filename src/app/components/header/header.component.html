@@ -2,25 +2,23 @@
   <ion-toolbar [color]="color">
 
     <!-- Header de Inicio y Equipo (Predeterminado) -->
-    <ion-buttons *ngIf="title != 'Perfil'" slot="start">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
     <ion-title>{{title}}</ion-title>
     <ion-buttons *ngIf="title != 'Perfil'" slot="end">
-      <ion-button [routerLink]="['Perfil']">
+      <ion-button [routerLink]="['/Perfil']">
         <ion-icon name="person-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <!-- Header de Perfil -->
-    <ion-buttons *ngIf="title == 'Perfil'" slot="start">
-      <ion-back-button defaultHref={{title}}></ion-back-button>
-    </ion-buttons>
     <ion-buttons *ngIf="title == 'Perfil'" slot="end">
-      <ion-button routerLink="/Inicio">
+      <ion-button id="log-out-alert">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
+      <ion-alert class="log-out-alert" trigger="log-out-alert" header="¿Quieres salir de esta cuenta?" [buttons]="alertButtons"></ion-alert>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorPage implements OnInit {
 
+  title: string = "Buscar partidos";
+
   constructor() { }
 
   ngOnInit() {

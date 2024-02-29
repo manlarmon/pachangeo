@@ -39,7 +39,7 @@
                 <ion-label class="label-list-item">Solicitudes</ion-label>
               </ion-item>
               <div slot="content" style="padding-left: 12%; ">
-                <ion-menu-toggle>
+                <ion-menu-toggle [routerLink]="['/Buscador']">
                   <ion-item lines="none" button="true" detail="">
                     <ion-icon name="search"></ion-icon>
                     <ion-label class="label-list-item ">Buscador</ion-label>
@@ -47,7 +47,7 @@
                 </ion-menu-toggle>
               </div>
               <div slot="content" style="padding-left: 12%;">
-                <ion-menu-toggle>
+                <ion-menu-toggle [routerLink]="['/Solicitudes']">
                   <ion-item button="true" detail="">
                     <ion-icon name="albums"></ion-icon>
                     <ion-label class="label-list-item ">Mis Solicitudes</ion-label>
@@ -57,7 +57,7 @@
             </ion-accordion>
           </ion-accordion-group>
 
-          <ion-menu-toggle>
+          <ion-menu-toggle [routerLink]="['/Ajustes']">
             <ion-item button=" true" detail="">
               <ion-icon name="settings"></ion-icon>
               <ion-label class="label-list-item">Ajustes</ion-label>

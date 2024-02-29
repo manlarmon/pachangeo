@@ -5,3 +5,11 @@ ion-icon {
 ion-header {
     border-bottom: 2px solid #FBFADA;
 }
+
+ion-alert.log-out-alert {
+    --backdrop-opacity: 0.7;
+}
+
+button.alert-button.log-out-confirm {
+    background-color: red !important;
+}

@@ -16,16 +16,24 @@ const routes: Routes = [
     loadChildren: () => import('./views/equipo/equipo.module').then(m => m.EquipoPageModule)
   },
   {
-    path: 'ajustes',
-    loadChildren: () => import('./views/ajustes/ajustes.module').then( m => m.AjustesPageModule)
+    path: 'Perfil',
+    loadChildren: () => import('./views/perfil/perfil.module').then(m => m.PerfilPageModule)
   },
   {
-    path: 'solicitudes',
-    loadChildren: () => import('./views/solicitudes/solicitudes.module').then( m => m.SolicitudesPageModule)
+    path: 'Ajustes',
+    loadChildren: () => import('./views/ajustes/ajustes.module').then(m => m.AjustesPageModule)
   },
   {
-    path: 'buscador',
-    loadChildren: () => import('./views/buscador/buscador.module').then( m => m.BuscadorPageModule)
+    path: 'Solicitudes',
+    loadChildren: () => import('./views/solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule)
+  },
+  {
+    path: 'Buscador',
+    loadChildren: () => import('./views/buscador/buscador.module').then(m => m.BuscadorPageModule)
+  },
+  {
+    path: 'Login',
+    loadChildren: () => import('./views/login/login.module').then(m => m.LoginPageModule)
   },
 
 ];

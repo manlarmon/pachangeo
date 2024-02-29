@@ -6,7 +6,10 @@ import { HomePage } from './home/home.page';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from '../components/components.module';
-import { PerfilPageRoutingModule } from './perfil/perfil-routing.module';
+import { BuscadorPage } from './buscador/buscador.page';
+import { LoginPage } from './login/login.page';
+import { SolicitudesPage } from './solicitudes/solicitudes.page';
+import { AjustesPage } from './ajustes/ajustes.page';
 
 
 
@@ -14,7 +17,11 @@ import { PerfilPageRoutingModule } from './perfil/perfil-routing.module';
   declarations: [
     EquipoPage,
     PerfilPage,
-    HomePage
+    HomePage,
+    BuscadorPage,
+    LoginPage,
+    SolicitudesPage,
+    AjustesPage
   ],
   imports: [
     CommonModule,

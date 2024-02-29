@@ -9,8 +9,8 @@ const routes: Routes = [
     component: EquipoPage
   },
   {
-    path: 'Perfil',
-    loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+    path: 'crear-equipo',
+    loadChildren: () => import('./crear-equipo/crear-equipo.module').then( m => m.CrearEquipoPageModule)
   },
 ];
 

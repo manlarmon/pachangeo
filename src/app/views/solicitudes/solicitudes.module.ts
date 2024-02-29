@@ -15,6 +15,8 @@ import { SolicitudesPage } from './solicitudes.page';
     IonicModule,
     SolicitudesPageRoutingModule
   ],
-  declarations: [SolicitudesPage]
+  declarations: [
+
+  ]
 })
-export class SolicitudesPageModule {}
+export class SolicitudesPageModule { }

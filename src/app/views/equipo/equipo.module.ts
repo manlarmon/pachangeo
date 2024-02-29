@@ -12,8 +12,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     EquipoPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   declarations: []
 })
-export class EquipoPageModule {}
+export class EquipoPageModule { }
