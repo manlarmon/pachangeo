@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EquipoPage } from './equipo/equipo.page';
-import { PerfilPage } from './perfil/perfil.page';
-import { HomePage } from './home/home.page';
-import { FormsModule } from '@angular/forms';
+import { EquipoPage } from './main/equipo/equipo.page';
+import { PerfilPage } from './main/perfil/perfil.page';
+import { HomePage } from './main/home/home.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from '../components/components.module';
-import { BuscadorPage } from './buscador/buscador.page';
-import { LoginPage } from './login/login.page';
-import { SolicitudesPage } from './solicitudes/solicitudes.page';
-import { AjustesPage } from './ajustes/ajustes.page';
+import { BuscadorPage } from './main/buscador/buscador.page';
+import { SolicitudesPage } from './main/solicitudes/solicitudes.page';
+import { AjustesPage } from './main/ajustes/ajustes.page';
+import { AuthPage } from './auth/auth.page';
+import { RouterModule } from '@angular/router';
+import { SignUpPage } from './auth/sign-up/sign-up.page';
+import { ForgotPasswordPage } from './auth/forgot-password/forgot-password.page';
 
 
 
@@ -19,15 +22,19 @@ import { AjustesPage } from './ajustes/ajustes.page';
     PerfilPage,
     HomePage,
     BuscadorPage,
-    LoginPage,
     SolicitudesPage,
-    AjustesPage
+    AjustesPage,
+    AuthPage,
+    SignUpPage,
+    ForgotPasswordPage
   ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ComponentsModule,
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ViewsModule { }

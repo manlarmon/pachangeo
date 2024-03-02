@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { PerfilPageRoutingModule } from './perfil-routing.module';
-import { ComponentsModule } from "../../components/components.module";
+import { ComponentsModule } from "../../../components/components.module";
 
 @NgModule({
     declarations: [],
@@ -15,4 +15,4 @@ import { ComponentsModule } from "../../components/components.module";
         ComponentsModule
     ]
 })
-export class PerfilPageModule {}
+export class PerfilPageModule { }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,8 @@ export class AppComponent {
   pachangeoIcon = 'assets/icon/pachangeoIcon.png';
   jugador = 'assets/icon/jugador.png';
 
-  constructor() { }
+
+  constructor() {
+
+  }
 }

@@ -2,6 +2,10 @@ p {
     color: black;
 }
 
+.custom-margin-bottom {
+    margin-bottom: 5px;
+}
+
 ion-button.custom-button {
     --background: #436850;
     color: white;
@@ -12,6 +16,11 @@ ion-toolbar.custom-toolbar {
 }
 
 ion-input.custom-input {
+    color: #436850;
+    font-weight: bold;
+}
+
+ion-select.custom-select {
     color: #436850;
     font-weight: bold;
 }

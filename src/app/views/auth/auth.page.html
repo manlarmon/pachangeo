@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+
+  <div class="login-content">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <ion-card class="custom-card">
+
+        <ion-card-header class="custom-card-header">
+          <img class="logo-img" [src]="logoPrincipal">
+          <ion-card-title style="color: #436850; font-weight: bold;">PachanGeo</ion-card-title>
+          <ion-card-subtitle style="color: #436850; font-weight: bold;">Login</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content class="custom-card-content">
+
+          <!-- Input Email -->
+          <custom-input icon="mail-outline" label="Email" type="email" formControlName="email" autocomplete="email"
+            [control]="loginForm.controls.email"></custom-input>
+
+          <div class="validators" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched">
+            <div class="custom-validators" *ngIf="loginForm.controls.email.errors?.['required']">Email requerido para el
+              login</div>
+            <div class="custom-validators" *ngIf="loginForm.controls.email.errors?.['email']">Introduzca un Email válido
+            </div>
+          </div>
+
+          <!-- Input Contraseña -->
+          <custom-input icon="lock-closed-outline" label="Contraseña" type="password" formControlName="password"
+            [control]="loginForm.controls.password"></custom-input>
+
+          <div class="validators" *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched">
+            <div *ngIf="loginForm.controls.email.errors?.['required']">
+              <p class="custom-validators">Contraseña requerida
+                para el login</p>
+            </div>
+          </div>
+
+          <p routerLink="Forgot-password" class="ion-text-end forgot-password-text">¿Has olvidado la contraseña...?</p>
+
+        </ion-card-content>
+        <ion-button class="custom-button ion-padding" type="submit" expand="block" type="submit"
+          [disabled]="loginForm.invalid">Login</ion-button>
+
+        <ion-button class="custom-button ion-padding" routerLink="Sign-up" expand="block"
+          fill="outline">Registrate</ion-button>
+      </ion-card>
+    </form>
+  </div>
+
+
+
+</ion-content>

@@ -1,0 +1,23 @@
+ion-item.custom-item {
+    --background: #ADBC9F !important;
+    color: #12372A !important;
+    padding: 0 !important;
+}
+
+ion-input.custom-input {
+    background-color: #ADBC9F !important;
+    color: #12372A !important;
+    padding: 0 !important;
+    --highlight-color-invalid: rgb(201, 12, 12) !important;
+    font-weight: bold;
+}
+
+ion-icon.custom-icon {
+    background-color: #ADBC9F !important;
+    color: #12372A !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 20px !important;
+    padding-right: 10px !important;
+    display: flex !important;
+}

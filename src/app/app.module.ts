@@ -8,10 +8,25 @@ import { ComponentsModule } from './components/components.module';
 import { FormsModule } from '@angular/forms';
 import { BackendModule } from './backend/backend.module';
 import { ViewsModule } from './views/views.module';
+import { environment } from 'src/environments/environment';
+
+// Firebase
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ComponentsModule, FormsModule, ViewsModule, BackendModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ComponentsModule,
+    FormsModule,
+    ViewsModule,
+    BackendModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

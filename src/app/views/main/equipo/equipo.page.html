@@ -4,10 +4,14 @@
   <div id="container">
 
     <ion-card class="ion-padding">
+
       <p>Al pulsar el boton entrarás en un formulario para crear un equipo.</p>
       <ion-button class="custom-button ion-padding " id="Crear-equipo" expand="block">Crear Equipo</ion-button>
+
       <ion-modal trigger="Crear-equipo" [canDismiss]="canDismiss">
+
         <ng-template>
+
           <ion-header>
             <ion-toolbar class="custom-toolbar">
               <ion-buttons slot="start">
@@ -17,19 +21,35 @@
             </ion-toolbar>
           </ion-header>
           <ion-content class="ion-padding">
-            <ion-item>
-              <ion-input label="Enter your name" labelPlacement="stacked" type="text"
-                placeholder="Your name"></ion-input>
-            </ion-item>
+            <ion-card class="ion-padding">
+              <p>Formulario para crear equipo</p>
+
+              <ion-input label="Nombre del equipo" class="custom-input custom-margin-bottom" labelPlacement="floating"
+                [counter]="true" placeholder="PachanGeo FC" maxlength="20"></ion-input>
+
+              <ion-select class="custom-select custom-margin-bottom" label="Tipo de futbol preferido"
+                label-placement="floating" fill="outline">
+                <ion-select-option value="apple">Todos</ion-select-option>
+                <ion-select-option value="banana">Fútbol Sala</ion-select-option>
+                <ion-select-option value="orange">Fútbol 7</ion-select-option>
+                <ion-select-option value="orange">Fútbol 11</ion-select-option>
+              </ion-select>
+
+              <ion-button class="custom-button ion-padding" expand="block">Crear Equipo</ion-button>
+
+
+            </ion-card>
           </ion-content>
+
         </ng-template>
+
       </ion-modal>
     </ion-card>
 
     <ion-card class="ion-padding">
       <p>Introduce el id del equipo al que quieres unirte.</p>
-      <ion-input label="Id del equipo" class="custom-input" labelPlacement="floating" [counter]="true" placeholder="#AAAA"
-        maxlength="5"></ion-input>
+      <ion-input label="Id del equipo" class="custom-input" labelPlacement="floating" [counter]="true"
+        placeholder="#AAAA" maxlength="5"></ion-input>
       <ion-button class="custom-button ion-padding" id="Unirse-equipo" expand="block">Unirse a Equipo</ion-button>
     </ion-card>
   </div>

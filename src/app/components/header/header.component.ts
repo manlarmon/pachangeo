@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() title: string = "";
   @Input() color: string = "";
+  @Input() backButton: string;
 
   public alertButtons = [
     {

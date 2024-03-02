@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pachangueo-e1a80": {
+      "hosting": {
+        "app": [
+          "pachangueo-e1a80"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pachangueo-e1a80"
+  }
+}

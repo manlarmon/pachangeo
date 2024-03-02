@@ -1,0 +1,39 @@
+<app-header [title]="title" color="tertiary"></app-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-card class="ion-padding custom-card">
+
+    <p>Introduce el id del equipo para buscar sus solicitudes.</p>
+    <ion-searchbar show-cancel-button="never" placeholder="#AAAA"></ion-searchbar>
+
+    <p>Introduce el número de km de distancia para filtrar las solicitudes</p>
+    <ion-input label="Nº de Kms" class="custom-input" labelPlacement="floating" [counter]="true" placeholder="0"
+      type="number" maxlength="3"></ion-input>
+    <ion-item>
+      <ion-input label="Number input" type="number" placeholder="000"></ion-input>
+    </ion-item>
+    <ion-button class="custom-button ion-padding" id="Unirse-equipo" expand="block">Unirse a Equipo</ion-button>
+
+    <ion-list>
+      <ion-item *ngFor="let item of items; let index">
+        <ion-avatar slot="start">
+          <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+        </ion-avatar>
+        <ion-label>{{ item }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-card>
+
+  <div id="container">
+
+
+
+  </div>
+</ion-content>
