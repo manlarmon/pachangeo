@@ -6,13 +6,14 @@ import { HomePage } from './main/home/home.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from '../components/components.module';
-import { BuscadorPage } from './main/buscador/buscador.page';
-import { SolicitudesPage } from './main/solicitudes/solicitudes.page';
+import { BuscadorPage } from './main/menu-solicitudes/buscador/buscador.page';
+import { SolicitudesPage } from './main/menu-solicitudes/solicitudes/solicitudes.page';
 import { AjustesPage } from './main/ajustes/ajustes.page';
 import { AuthPage } from './auth/auth.page';
 import { RouterModule } from '@angular/router';
 import { SignUpPage } from './auth/sign-up/sign-up.page';
 import { ForgotPasswordPage } from './auth/forgot-password/forgot-password.page';
+import { FiltroProvinciaPipe } from '../pipes/filtro-provincia.pipe';
 
 
 
@@ -26,7 +27,9 @@ import { ForgotPasswordPage } from './auth/forgot-password/forgot-password.page'
     AjustesPage,
     AuthPage,
     SignUpPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    FiltroProvinciaPipe
+
   ],
   imports: [
     CommonModule,

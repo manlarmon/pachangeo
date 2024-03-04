@@ -12,7 +12,7 @@
         <ion-card-content class="custom-card-content">
 
           <!-- Input Email -->
-          <custom-input icon="mail-outline" label="Email" type="email" formControlName="email" autocomplete="email"
+          <custom-input  icon="mail-outline" label="Email" type="email" formControlName="email" autocomplete="email"
             [control]="loginForm.controls.email"></custom-input>
 
           <div class="validators" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched">

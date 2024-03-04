@@ -31,7 +31,7 @@ export class EquipoPage implements OnInit {
 
   canDismiss = async () => {
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Are you sure?',
+      header: '¿Estas seguro de cancelar?',
       buttons: [
         {
           text: 'Yes',

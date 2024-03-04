@@ -22,6 +22,8 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   @Input() label!: string;
   @Input() autocomplete!: string;
   @Input() icon!: string;
+  @Input() placeholder!: any;
+  @Input() labelPlacement!: string;
 
   // Valor interno del input
   value: any = '';
@@ -52,6 +54,8 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   }
 
   // Implementación de ControlValueAccessor
+  // Las agrego debido a un error "No value accessor for form control name: 'password " 
+
 
   writeValue(value: any): void {
     this.value = value;

@@ -5,18 +5,21 @@
   <ion-grid fixed>
     <ion-row class="ion-justify-content-start">
       <ion-col size="12">
-        <ion-card>
-          <ion-list lines="none" style="padding: 0;">
-            <ion-item>
-              <ion-avatar slot="start">
-                <img src="https://www.gravatar.com/avatar?d=identicon" />
-              </ion-avatar>
-              <ion-label>
-                <h2>Nombre de Usuario</h2>
-                <p>Correo Electrónico</p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
+        <ion-card class="custom-perfil-card ion-padding">
+
+          <ion-item lines="none">
+            <ion-icon class="image-icon" slot="start" *ngIf="!perfilImage" (click)="takePerfilImage()"
+              name="camera-outline"></ion-icon>
+            <ion-avatar *ngIf="perfilImage" slot="start">
+              <img class="image-icon" [src]="perfilImage" (click)="takePerfilImage()" />
+            </ion-avatar>
+          </ion-item>
+
+          <ion-card-header>
+            <ion-card-title>Nombre de Usuario</ion-card-title>
+            <ion-card-subtitle>Correo Electrónico</ion-card-subtitle>
+          </ion-card-header>
+
         </ion-card>
       </ion-col>
       <ion-col size="12">
@@ -40,11 +43,6 @@
               <ion-item style="background-color: #ADBC9F;">
                 <ion-label position="floating">Posición preferida 1:</ion-label>
                 <ion-input type="" placeholder="Awesome Input"></ion-input>
-              </ion-item>
-              <ion-item style="background-color: #ADBC9F;">
-                <ion-label>
-                  <p>Posición preferida 2:</p>
-                </ion-label>
               </ion-item>
               <ion-item style="background-color: #ADBC9F;">
                 <ion-label>

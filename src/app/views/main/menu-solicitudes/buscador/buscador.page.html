@@ -1,0 +1,45 @@
+<app-header [title]="title" color="tertiary"></app-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-label>Selecciona una provincia:</ion-label>
+    <ion-select [(ngModel)]="provinciaSeleccionada">
+      <ion-select-option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+  <ion-list *ngIf="solicitudesFiltradas.length==0">
+    <ion-item-sliding class="solicitud-item" *ngFor="let solicitud of misSolicitudes | filtroProvincia:provinciaSeleccionada ">
+      <ion-item class="custom-item ion-padding">
+        <ion-label>
+          <div class="title">{{solicitud.location}} </div>
+          <div class="data">
+            <span>Provincia: </span>{{ solicitud.province }} <br>
+            <span>Tipo de Fútbol: </span>{{ solicitud.footballType }} <br>
+            <span *ngIf="solicitud.numberExtraPlayers"> Nº Suplentes: </span>{{solicitud.numberExtraPlayers}}<br>
+            <span>Fecha y hora: </span>{{ solicitud.dateTime | date: 'dd/MM/yyyy HH:mm:ss' }} <br>
+            <span *ngIf="solicitud.isAccepted"> Estado: ACEPTADA<br></span>
+            <span *ngIf="!solicitud.isAccepted">Estado: SIN ACEPTAR <br> </span>
+            <span *ngIf="solicitud.pricePerson">Precio por persona: </span>{{solicitud.pricePerson}} €<br>
+            <span>Google Maps: <a class="custom-link" href="{{solicitud.mapsLocation}}" target="_blank"
+                rel="noopener noreferrer">Enlace de ubicación</a> <br></span>
+          </div>
+
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="success" (click)="aceptarSolicitud(solicitud)">
+          <ion-icon class="option-btn" name="checkmark-circle-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+
+
+</ion-content>

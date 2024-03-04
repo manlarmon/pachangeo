@@ -48,3 +48,109 @@ button.alert-button.log-out-cancel {
     background-color: rgb(244, 149, 24) !important;
     color: white !important;
 }
+
+@media (min-width: 768px) {
+
+    .custom-add-update-modal {
+        --height: 680px;
+    }
+}
+
+
+
+/*
+* Custom Datetime Day Parts
+* -------------------------------------------
+*/
+
+ion-datetime {
+    background-color: #436850;
+    color: #ADBC9F;
+    border-radius: 5px;
+}
+
+ion-picker-internal.hydrated {
+
+    ion-picker-column-internal {
+        background-color: #faebd7a6;
+
+    }
+
+}
+
+ion-datetime::part(calendar-day) {
+    color: #ebfab5;
+}
+
+ion-datetime::part(calendar-day today) {
+    color: #00ffdd;
+}
+
+ion-datetime::part(calendar-day):focus {
+    background-color: rgba(108, 146, 69, 0.733);
+    box-shadow: 0px 0px 0px 4px rgba(154, 209, 98, 0.637);
+}
+
+/*
+* Custom Material Design Datetime Day Parts
+* -------------------------------------------
+*/
+
+ion-datetime.md::part(calendar-day active),
+ion-datetime.md::part(calendar-day active):focus {
+    background-color: #9ad162;
+    border-color: #9ad162;
+    color: #fff;
+}
+
+ion-datetime.md::part(calendar-day today) {
+    border-color: #00ff55;
+}
+
+//Alert
+.alert-wrapper {
+    background-color: #436850 !important;
+    color: #ADBC9F;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.alert-button-group {
+    padding: 8px;
+    background-color: #436850;
+    color: #ADBC9F;
+}
+
+.alert-button-group .alert-button {
+    color: #ADBC9F;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.md button.alert-button.alert-button-confirm {
+    color: #ADBC9F;
+    border-radius: 4px;
+}
+
+.solicitud-item {
+    --padding-top: 20px;
+
+    .title {
+        font-weight: 600;
+        padding-bottom: 5px;
+    }
+
+    .data {
+        font-size: 13px;
+    }
+
+    .option-btn {
+        font-size: 27px;
+    }
+
+    ion-chip {
+        font-size: 14px;
+        border-radius: 10px;
+        margin-left: 0;
+    }
+}

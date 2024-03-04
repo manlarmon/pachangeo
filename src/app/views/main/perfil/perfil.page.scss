@@ -2,6 +2,29 @@
     color: darkslategray !important;
 }
 
+ion-card.custom-perfil-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    * {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
 ion-item {
     --ion-item-background: #ADBC9F;
+}
+
+ion-avatar {
+    width: 200px;
+    height: 160px;
+    --border-radius: 15px;
+}
+
+.image-icon {
+    font-size: 100px;
+    opacity: 90%;
 }

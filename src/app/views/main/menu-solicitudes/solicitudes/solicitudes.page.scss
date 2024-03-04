@@ -1,0 +1,14 @@
+a {
+    color: rgb(160, 67, 0);
+}
+
+ion-item.custom-item {
+    color: #436850;
+    --background: #ADBC9F !important;
+    padding: 0 !important;
+
+    span {
+        color: #436850;
+        font-weight: bold;
+    }
+}

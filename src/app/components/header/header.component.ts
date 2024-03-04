@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { FireBaseService } from 'src/app/services/firebase.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,12 @@ export class HeaderComponent implements OnInit {
 
   @Input() title: string = "";
   @Input() color: string = "";
+  @Input() buttonPerfil: boolean;
   @Input() backButton: string;
+  @Input() isModal: boolean;
+
+  firebaseService = inject(FireBaseService);
+  utilsService = inject(UtilsService);
 
   public alertButtons = [
     {
@@ -24,14 +31,22 @@ export class HeaderComponent implements OnInit {
       cssClass: 'log-out-confirm',
       handler: () => {
         console.log('Log out confirmed');
+        this.signOut()
       },
     },
   ];
 
-
-  constructor() { }
-
   ngOnInit() { }
 
+  // Cerrar sesión
+  async signOut() {
+    console.log('Cerrando sesión');
+    await this.firebaseService.signOut();
+  }
+
+  // Cerrar modal
+  dismissModal() {
+    this.utilsService.dismissModal();
+  }
 
 }

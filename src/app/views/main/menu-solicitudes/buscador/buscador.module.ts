@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { BuscadorPageRoutingModule } from './buscador-routing.module';
-
-import { BuscadorPage } from './buscador.page';
+import { FiltroProvinciaPipe } from 'src/app/pipes/filtro-provincia.pipe';
 
 @NgModule({
   imports: [
@@ -19,4 +18,4 @@ import { BuscadorPage } from './buscador.page';
     
   ]
 })
-export class BuscadorPageModule {}
+export class BuscadorPageModule { }

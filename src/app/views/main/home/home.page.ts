@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { FireBaseService } from 'src/app/services/firebase.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +12,12 @@ import { Observable } from 'rxjs';
 export class HomePage {
 
   title: string = "Inicio";
-  constructor() {
 
-  }
+  firebaseService = inject(FireBaseService);
+  utilsService = inject(UtilsService);
+
+  // Agregar o actualizar solicitudes de partido
+
+
 
 }

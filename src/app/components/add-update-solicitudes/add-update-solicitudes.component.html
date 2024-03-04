@@ -1,0 +1,119 @@
+<app-header [isModal]="true" [title]="title" color="tertiary"></app-header>
+<ion-content>
+  <form [formGroup]="matchForm" class="ion-padding ion-text-center" (ngSubmit)="submit()">
+
+    <ion-card class="custom-card">
+
+      <ion-card-content class="custom-card-content ">
+
+        <!-- Select Tipo de Fútbol -->
+        <ion-item class="custom-item ion-margin-bottom" lines="none">
+          <ion-label>Tipo de Fútbol: {{ matchForm.controls.footballType.value }}</ion-label>
+          <ion-select class="custom-select" [formControl]="matchForm.controls.footballType"
+            placeholder="Selecciona un tipo">
+            <ion-select-option value="Futbol-5">Fútbol 5</ion-select-option>
+            <ion-select-option value="Futbol-7">Fútbol 7</ion-select-option>
+            <ion-select-option value="Futbol-11">Fútbol 11</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.footballType.errors && matchForm.controls.footballType.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.footballType.errors?.['required']">Tipo de fútbol
+            requerido
+          </div>
+        </div>
+
+        <!-- Datepicker para Fecha -->
+        <ion-item class="custom-item ion-margin-bottom" lines="none">
+          <ion-label>Fecha y Hora</ion-label>
+          <ion-datetime [formControl]="matchForm.controls.dateTime" [highlightedDates]="highlightedDates"
+            placeholder="Selecciona una fecha y hora"></ion-datetime>
+        </ion-item>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.dateTime.errors && matchForm.controls.dateTime.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.dateTime.errors?.['required']">Fecha requerida
+          </div>
+          <div class="custom-validators" *ngIf="matchForm.controls.dateTime.errors?.['fechaHoraNoAnterior']">La
+            fecha no puede ser anterior o igual a la fecha actual</div>
+        </div>
+
+        <!-- Select de Provincia -->
+        <ion-item class="custom-item" lines="none">
+          <ion-label>Provincia: {{ matchForm.controls.province.value }}</ion-label>
+          <ion-select class="custom-select" [formControl]="matchForm.controls.province"
+            placeholder="Selecciona una provincia">
+            <ion-select-option *ngFor="let province of provinces" [value]="province">{{ province }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.province.errors && matchForm.controls.province.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.province.errors?.['required']">Provincia requerida
+          </div>
+        </div>
+
+        <!-- Input de Localizacion -->
+        <custom-input label="Ubicación" type="text" autocomplete="location"
+          [control]="matchForm.controls.location"></custom-input>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.location.errors && matchForm.controls.location.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.location.errors?.['required']">Ubicación requerida
+          </div>
+        </div>
+
+        <!-- Input Ubicación en Maps -->
+        <custom-input label="Enlace de Ubicación en Google Maps" type="text" autocomplete="mapsLocation"
+          [control]="matchForm.controls.mapsLocation"></custom-input>
+
+        <div class="validators"
+          *ngIf="matchForm.controls.mapsLocation.errors && matchForm.controls.mapsLocation.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.mapsLocation.errors?.['googleMapsLink']">
+            El enlace debe ser válido de Google Maps.
+          </div>
+
+          <div class="custom-validators" *ngIf="matchForm.controls.mapsLocation.errors?.['required']">Número de
+            jugadores
+            extras requerido </div>
+        </div>
+
+        <!-- Input Número de Jugadores Extras -->
+        <custom-input label="Número de Jugadores Extras" type="number" autocomplete="numberExtraPlayers"
+          [control]="matchForm.controls.numberExtraPlayers" [placeholder]=0 value="0"></custom-input>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.numberExtraPlayers.errors && matchForm.controls.numberExtraPlayers.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.numberExtraPlayers.errors?.['min']">Ingrese un
+            número
+            mayor o
+            igual a 0</div>
+          <div class="custom-validators" *ngIf="matchForm.controls.numberExtraPlayers.errors?.['max']">Ingrese un
+            número
+            menor o
+            igual a 10</div>
+        </div>
+
+        <!-- Input Precio por Persona -->
+        <custom-input label="Precio por Persona" type="number" autocomplete="pricePerson"
+          [control]="matchForm.controls.pricePerson" [placeholder]="0" value="0"></custom-input>
+
+        <div class="validators ion-margin-bottom"
+          *ngIf="matchForm.controls.pricePerson.errors && matchForm.controls.pricePerson.touched">
+          <div class="custom-validators" *ngIf="matchForm.controls.pricePerson.errors?.['min']">Ingrese un precio
+            mayor
+            o igual
+            a 0</div>
+        </div>
+
+
+
+      </ion-card-content>
+      <ion-button class="custom-button ion-padding ion-margin-bottom" type="submit"
+        [disabled]="matchForm.invalid">Agregar
+        solicitud</ion-button>
+    </ion-card>
+  </form>
+
+</ion-content>

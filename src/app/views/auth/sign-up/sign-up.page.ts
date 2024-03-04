@@ -43,11 +43,12 @@ export class SignUpPage implements OnInit {
 
           console.log('Usuario registrado correctamente');
           console.log(res);
+
         })
         .catch((error) => {
           console.log('Error al registrar usuario', error);
           this._utilsService.presentToast({
-            message: 'Error al refistrar usuario',
+            message: 'Error al registrar usuario',
             duration: 2000,
             color: 'danger',
             position: 'middle',
@@ -72,8 +73,16 @@ export class SignUpPage implements OnInit {
       this._firebaseService.setDocument(path, this.loginForm.value)
         .then(async res => {
           this._utilsService.saveInLocalStorage('user', this.loginForm.value);
-          this._utilsService.routerLink('/main/Inicio');
+          this._utilsService.routerLink('/Solicitudes');
           this.loginForm.reset();
+          this._utilsService.presentToast({
+            message: `Bienvenido a PachanGeo`,
+            duration: 1200,
+            color: 'success',
+            position: 'middle',
+            icon: 'person-circle-outline'
+          });
+
         })
         .catch((error) => {
           console.log('Error al registrar usuario', error);

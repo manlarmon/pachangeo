@@ -1,13 +1,28 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar [color]="color">
 
-    <!-- Header de Inicio y Equipo (Predeterminado) -->
+    <!-- Iconos de slot start -->
     <ion-buttons slot="start">
+
+      <!-- Icono de menu -->
       <ion-menu-button></ion-menu-button>
+
+      <!-- Icono de backbutton -->
+      <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
+
+      <!-- Icono para cerrar modal -->
+      <ion-button *ngIf="isModal" (click)="dismissModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+
     </ion-buttons>
 
+    <!-- Titulo de la view -->
     <ion-title>{{title}}</ion-title>
-    <ion-buttons *ngIf="title != 'Perfil'" slot="end">
+
+
+    <!-- Iconos de slot end -->
+    <ion-buttons slot="end">
       <ion-button [routerLink]="['/Perfil']">
         <ion-icon name="person-circle"></ion-icon>
       </ion-button>
@@ -18,7 +33,8 @@
       <ion-button id="log-out-alert">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
-      <ion-alert class="log-out-alert" trigger="log-out-alert" header="¿Quieres salir de esta cuenta?" [buttons]="alertButtons"></ion-alert>
+      <ion-alert class="log-out-alert" trigger="log-out-alert" header="¿Quieres salir de esta cuenta?"
+        [buttons]="alertButtons"></ion-alert>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

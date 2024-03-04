@@ -5,23 +5,28 @@ import { IonicModule } from '@ionic/angular';
 import { Router, RouterModule } from '@angular/router';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddUpdateSolicitudesComponent } from './add-update-solicitudes/add-update-solicitudes.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    AddUpdateSolicitudesComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+
   ],
   exports: [
     HeaderComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    AddUpdateSolicitudesComponent
   ]
 })
 export class ComponentsModule { }
