@@ -44,9 +44,5 @@ export class HeaderComponent implements OnInit {
     await this.firebaseService.signOut();
   }
 
-  // Cerrar modal
-  dismissModal() {
-    this.utilsService.dismissModal();
-  }
 
 }

@@ -105,11 +105,12 @@ export class FireBaseService {
 
   //Subir imagen
   async uploadImage(path: string, dataUrl: string) {
-    //Referencia al storage
-    const storageRef = ref(getStorage(), path);
+
+    //Referencia al storage ref(getStorage(), path)
+
     //Subir la imagen con la referencia y la dataUrl y el tipo de dato (data_url) 
     // () después de la promesa para que retorne la promesa de getDownloadURL()
-    return uploadString(storageRef, dataUrl, 'data_url').then(() => {
+    return uploadString(ref(getStorage(), path), dataUrl, 'data_url').then(() => {
       //Obtener la url de la imagen
       return getDownloadURL(ref(getStorage(), path));
     });

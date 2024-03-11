@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: EquipoPage
   },
-  {
-    path: 'crear-equipo',
-    loadChildren: () => import('./crear-equipo/crear-equipo.module').then(m => m.CrearEquipoPageModule)
-  },
 ];
 
 @NgModule({

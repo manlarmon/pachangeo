@@ -10,11 +10,6 @@
       <!-- Icono de backbutton -->
       <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
 
-      <!-- Icono para cerrar modal -->
-      <ion-button *ngIf="isModal" (click)="dismissModal()">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
-
     </ion-buttons>
 
     <!-- Titulo de la view -->
@@ -22,7 +17,7 @@
 
 
     <!-- Iconos de slot end -->
-    <ion-buttons slot="end">
+    <ion-buttons *ngIf="title != 'Perfil'" slot="end">
       <ion-button [routerLink]="['/Perfil']">
         <ion-icon name="person-circle"></ion-icon>
       </ion-button>

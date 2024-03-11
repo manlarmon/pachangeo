@@ -13,7 +13,6 @@ const routes: Routes = [
     path: 'Auth',
     loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthPageModule), canActivate: [NoAuthGuard]
   },
-
   {
     path: 'Main',
     loadChildren: () => import('./views/main/main.module').then(m => m.MainPageModule), canActivate: [AuthGuard]

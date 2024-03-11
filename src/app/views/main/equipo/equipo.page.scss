@@ -24,3 +24,64 @@ ion-select.custom-select {
     color: #436850;
     font-weight: bold;
 }
+
+ion-item.custom-item {
+    color: #436850;
+    font-weight: bold;
+    --background: #ADBC9F !important;
+    padding: 0 !important;
+}
+
+ion-card.custom-card {
+    width: 93%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 0 26px 0 rgba(0, 255, 191, 0.384) !important;
+    margin: 0 auto;
+    padding: 0;
+}
+
+ion-card-header.custom-card-header {
+
+    ion-card-title {
+        color: #12372A !important;
+        font-weight: bold;
+    }
+
+    color: #12372A !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+ion-card-content.custom-card-content {
+    -webkit-padding-start: 0 !important;
+    padding-inline-start: 0 !important;
+}
+
+.image-icon {
+    font-size: 100px;
+    opacity: 90%;
+}
+
+ion-card.custom-team-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    * {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+ion-item {
+    --ion-item-background: #ADBC9F;
+}
+
+ion-avatar.custom-avatar {
+    width: 160px;
+    height: 160px;
+    --border-radius: 160px;
+}

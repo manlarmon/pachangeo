@@ -7,7 +7,7 @@
       <ion-col size="12">
         <ion-card class="custom-perfil-card ion-padding">
 
-          <ion-item lines="none">
+          <ion-item lines="none ion-padding">
             <ion-icon class="image-icon" slot="start" *ngIf="!perfilImage" (click)="takePerfilImage()"
               name="camera-outline"></ion-icon>
             <ion-avatar *ngIf="perfilImage" slot="start">
@@ -15,9 +15,9 @@
             </ion-avatar>
           </ion-item>
 
-          <ion-card-header>
-            <ion-card-title>Nombre de Usuario</ion-card-title>
-            <ion-card-subtitle>Correo Electrónico</ion-card-subtitle>
+          <ion-card-header class="ion-padding" style="margin-top: 10px;">
+            <ion-card-title>{{user.name}}</ion-card-title>
+            <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
           </ion-card-header>
 
         </ion-card>
@@ -28,33 +28,48 @@
 
     <ion-row>
       <ion-col size="12">
-        <ion-card>
-          <ion-card-content>
-            <ion-card-header>
-              <ion-card-title>Preferecias de Usuario</ion-card-title>
-            </ion-card-header>
-            <ion-list lines="none" style="background-color: #ADBC9F;">
 
-              <ion-item style="background-color: #ADBC9F;">
-                <ion-label>
-                  <p>Notificaciones:</p>
-                </ion-label>
-              </ion-item>
-              <ion-item style="background-color: #ADBC9F;">
-                <ion-label position="floating">Posición preferida 1:</ion-label>
-                <ion-input type="" placeholder="Awesome Input"></ion-input>
-              </ion-item>
-              <ion-item style="background-color: #ADBC9F;">
-                <ion-label>
-                  <p>Tipo de fútbol preferido:</p>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-            <ion-button color="tertiary">
-              <ion-icon style="color: #ffffff !important;" slot="start" name="create"></ion-icon>Editar
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
+        <form [formGroup]="perfilForm" class="ion-padding" (ngSubmit)="perfilSubmit()">
+          <ion-card>
+            <ion-card-content>
+              <ion-card-header>
+                <ion-card-title>Información del jugador</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+
+                <ion-input label="Nombre de usuario:" class="custom-input custom-margin-bottom"
+                  labelPlacement="floating" [counter]="true" [formControl]="perfilForm.controls.name"></ion-input>
+
+
+                <p>Rol de jugador preferido: </p>
+                <ion-label> {{user.role}}</ion-label>
+                <ion-select class="custom-select custom-margin-bottom" fill="outline"
+                  [formControl]="perfilForm.controls.role">
+                  <ion-select-option value="Portero">Portero</ion-select-option>
+                  <ion-select-option value="Defensa">Defensa</ion-select-option>
+                  <ion-select-option value="CentroCampista">CentroCampista</ion-select-option>
+                  <ion-select-option value="Delantera">Delantera</ion-select-option>
+                  <ion-select-option value="Polivalente">Polivalente</ion-select-option>
+                </ion-select>
+
+                <p>Tipo de Fútbol preferido:</p>
+                <ion-label> {{user.favoriteFootballType}}</ion-label>
+                <ion-select class="custom-select custom-margin-bottom" fill="outline"
+                  [formControl]="perfilForm.controls.favoriteFootballType">
+                  <ion-select-option value="All-football">Todos</ion-select-option>
+                  <ion-select-option value="Futbol-5">Fútbol Sala</ion-select-option>
+                  <ion-select-option value="Futbol-7">Fútbol 7</ion-select-option>
+                  <ion-select-option value="Futbol-11">Fútbol 11</ion-select-option>
+                </ion-select>
+              </ion-card-content>
+
+              <ion-button color="tertiary" [disabled]="perfilForm.invalid" type="submit">
+                <ion-icon style="color: #ffffff !important;" slot="start" name="create"></ion-icon>Guardar
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </form>
       </ion-col>
     </ion-row>
 

@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ActionSheetController, IonModal } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
 import { FireBaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -16,7 +17,34 @@ export class AddUpdateSolicitudesComponent implements OnInit {
   firebaseService = inject(FireBaseService);
   utilsService = inject(UtilsService);
   firestore = inject(AngularFirestore)
+  actionSheetController = inject(ActionSheetController);
   user = {} as User
+
+  //Action Sheet para cancelar la creación de la solicitud
+  async cancel() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Descartar creación de Solicitud',
+      buttons: [
+        {
+          text: 'Confirmar descarte',
+          role: 'cancel',
+          handler: () => {
+            console.log('Confirm clicked');
+            // Add your cancel logic here
+            this.utilsService.dismissModal(); // Close the modal
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+      ]
+    });
+    await actionSheet.present();
+  }
+
 
   matchForm = new FormGroup({
     userIdOwner: new FormControl(this.user.userId, [Validators.required]),
@@ -101,7 +129,10 @@ export class AddUpdateSolicitudesComponent implements OnInit {
           position: 'middle',
           icon: 'checkmark-circle-outline',
         });
+
         this.matchForm.reset();
+        window.location.reload();
+
       } catch (error) {
         console.log('Error al registrar la solicitud', error);
         this.utilsService.presentToast({

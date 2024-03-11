@@ -1,5 +1,17 @@
-<app-header [isModal]="true" [title]="title" color="tertiary"></app-header>
 <ion-content>
+  <ion-header>
+    <ion-toolbar class="custom-toolbar">
+      <ion-buttons slot="start">
+        <!-- Icono para cerrar modal -->
+        <ion-button (click)="cancel()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Crear Solicitud</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
   <form [formGroup]="matchForm" class="ion-padding ion-text-center" (ngSubmit)="submit()">
 
     <ion-card class="custom-card">

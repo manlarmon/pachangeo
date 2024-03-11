@@ -30,7 +30,7 @@ export class BuscadorPage implements OnInit {
   firebaseService = inject(FireBaseService);
   utilsService = inject(UtilsService);
 
-  misSolicitudes: Solicitud[] = [];
+  solicitudes: Solicitud[] = [];
   solicitudesFiltradas: any[] = []; // Aquí almacenaremos las solicitudes filtradas
 
 
@@ -50,59 +50,63 @@ export class BuscadorPage implements OnInit {
 
   // Obtener solicitudes (Partidos)
   getSolicitudes() {
-
     const solicitudesPath = `solicitudes`;
-
-
-
     // Me desuscribo del observable para tener un control de cuando se ejecuta 
     // Para ello guardo el observable en una variable
     let sub = this.firebaseService.getCollectionData(solicitudesPath).subscribe({
       next: (data: any) => {
-        console.log(data);
-        // Guardo los datos(objetos solicitud) en la variable misSolicitudes
-        this.misSolicitudes = data;
-        // Me desuscribo del observable 
+
+        // Guardo los datos(objetos solicitud) en la variable solicitudes
+        this.solicitudes = data;
+
+        // Filtro las solicitudes 
+        // No aparecen las del propio usuario
+        // No aparecen las ya aceptadas
+        // No aparecen solicitudes de fechas pasadas
+        const user = this.user();
+        this.solicitudesFiltradas = this.solicitudes.filter(solicitud => solicitud.userIdOwner != user.userId && !solicitud.isAccepted && new Date(solicitud.dateTime) >= new Date());
+        console.log(this.solicitudesFiltradas);
+        // Me desuscribo del observable
         sub.unsubscribe();
       }
     })
   }
 
   aceptarSolicitud(solicitud?: Solicitud) {
-    {
-      // Realiza las actualizaciones necesarias en la solicitud
-      solicitud.isAccepted = true; // Cambia el estado a ACEPTADA
-      solicitud.userIdAccepted = this.user().userId; // Guarda el id del usuario que acepta la solicitud
+    // Realiza las actualizaciones necesarias en la solicitud
+    solicitud.isAccepted = true; // Cambia el estado a ACEPTADA
+    solicitud.userIdAccepted = this.user().userId; // Guarda el id del usuario que acepta la solicitud
 
-      let path = `solicitudes/${solicitud.id}`;
-      let userOwnPath = `users/${solicitud.userIdOwner}/user-requests`;
-      let userAcceptedPath = `users/${solicitud.userIdAccepted}/user-requests`;
+    let solicitudesPath = `solicitudes/${solicitud.id}`;
+    let userOwnPath = `users/${solicitud.userIdOwner}/user-requests/${solicitud.id}`;
+    let userAcceptedPath = `users/${solicitud.userIdAccepted}/user-requests`;
 
-      // Actualiza la solicitud
-      this.firebaseService.updateDocument(path, solicitud)
-        .then(() => {
-          // Actualiza la solicitud en el usuario que la ha creado
-          this.firebaseService.addDocument(userOwnPath, solicitud)
-            .then(() => {
-              // Actualiza la solicitud en el usuario que la ha aceptado
-              this.firebaseService.addDocument(userAcceptedPath, solicitud)
-                .then(() => {
-                  // Actualiza la solicitud en el la coleccion de solicitudes
-                  this.firebaseService.addDocument('path', solicitud).then(() => {
-                    //toast
-                    this.utilsService.presentToast({
-                      message: `Solicitud aceptada`,
-                      duration: 1200,
-                      color: 'success',
-                      position: 'middle',
-                      icon: 'checkmark-circle-outline'
-                    });
-                    // Actualiza la lista de solicitudes
-                    this.getSolicitudes();
-                  })
+    // Actualiza la solicitud
+    this.firebaseService.updateDocument(solicitudesPath, solicitud)
+      .then(() => {
+        // Actualiza la solicitud en el usuario que la ha creado
+        this.firebaseService.updateDocument(userOwnPath, solicitud)
+          .then(() => {
+            // Añade la solicitud en "mis solicitudes" en el usuario que la ha aceptado
+            this.firebaseService.addDocument(userAcceptedPath, solicitud)
+              .then(() => {
+                // Actualiza la solicitud en la coleccion de solicitudes
+                this.firebaseService.updateDocument(solicitudesPath, solicitud).then(() => {
+                  //toast
+                  this.utilsService.presentToast({
+                    message: `Solicitud aceptada`,
+                    duration: 1200,
+                    color: 'success',
+                    position: 'middle',
+                    icon: 'checkmark-circle-outline'
+                  });
+
+                  // Actualiza la lista de solicitudes
+                  this.getSolicitudes();
+                  window.location.reload();
                 })
-            })
-        })
-    }
+              })
+          })
+      })
   }
 }

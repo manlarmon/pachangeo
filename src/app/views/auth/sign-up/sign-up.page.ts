@@ -18,7 +18,10 @@ export class SignUpPage implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-
+    photo: new FormControl(''),
+    favoriteFootballType: new FormControl(''),
+    teamId: new FormControl(''),
+    role: new FormControl('')
   })
 
   _firebaseService = inject(FireBaseService);
@@ -73,7 +76,7 @@ export class SignUpPage implements OnInit {
       this._firebaseService.setDocument(path, this.loginForm.value)
         .then(async res => {
           this._utilsService.saveInLocalStorage('user', this.loginForm.value);
-          this._utilsService.routerLink('/Solicitudes');
+          this._utilsService.routerLink('/Inicio');
           this.loginForm.reset();
           this._utilsService.presentToast({
             message: `Bienvenido a PachanGeo`,

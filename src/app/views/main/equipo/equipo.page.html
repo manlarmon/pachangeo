@@ -1,56 +1,134 @@
 <app-header [title]="title" color="tertiary"></app-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container">
 
-    <ion-card class="ion-padding">
+  <div class="sin-equipo" *ngIf='!isTeam'>
+    <div id="container">
 
-      <p>Al pulsar el boton entrarás en un formulario para crear un equipo.</p>
-      <ion-button class="custom-button ion-padding " id="Crear-equipo" expand="block">Crear Equipo</ion-button>
+      <ion-card class="ion-padding">
 
-      <ion-modal trigger="Crear-equipo" [canDismiss]="canDismiss">
+        <p>Al pulsar el boton entrarás en un formulario para crear un equipo.</p>
+        <ion-button class="custom-button ion-padding " id="Crear-equipo" expand="block">Crear Equipo</ion-button>
 
-        <ng-template>
+        <ion-modal trigger="Crear-equipo">
 
-          <ion-header>
-            <ion-toolbar class="custom-toolbar">
-              <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Cancelar</ion-button>
-              </ion-buttons>
-              <ion-title>Crear Equipo</ion-title>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content class="ion-padding">
-            <ion-card class="ion-padding">
-              <p>Formulario para crear equipo</p>
+          <ng-template>
 
-              <ion-input label="Nombre del equipo" class="custom-input custom-margin-bottom" labelPlacement="floating"
-                [counter]="true" placeholder="PachanGeo FC" maxlength="20"></ion-input>
-
-              <ion-select class="custom-select custom-margin-bottom" label="Tipo de futbol preferido"
-                label-placement="floating" fill="outline">
-                <ion-select-option value="apple">Todos</ion-select-option>
-                <ion-select-option value="banana">Fútbol Sala</ion-select-option>
-                <ion-select-option value="orange">Fútbol 7</ion-select-option>
-                <ion-select-option value="orange">Fútbol 11</ion-select-option>
-              </ion-select>
-
-              <ion-button class="custom-button ion-padding" expand="block">Crear Equipo</ion-button>
+            <ion-header>
+              <ion-toolbar class="custom-toolbar">
+                <ion-buttons slot="start">
+                  <ion-button (click)="cancel()">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+                <ion-title>Crear Equipo</ion-title>
+              </ion-toolbar>
+            </ion-header>
 
 
-            </ion-card>
-          </ion-content>
 
-        </ng-template>
+            <ion-content class="ion-padding">
+              <form [formGroup]="teamForm" class="ion-padding ion-text-center" (ngSubmit)="createSubmit()">
 
-      </ion-modal>
-    </ion-card>
+                <ion-card class="ion-padding">
+                  <p>Formulario para crear equipo</p>
 
-    <ion-card class="ion-padding">
-      <p>Introduce el id del equipo al que quieres unirte.</p>
-      <ion-input label="Id del equipo" class="custom-input" labelPlacement="floating" [counter]="true"
-        placeholder="#AAAA" maxlength="5"></ion-input>
-      <ion-button class="custom-button ion-padding" id="Unirse-equipo" expand="block">Unirse a Equipo</ion-button>
-    </ion-card>
+                  <ion-input label="Nombre del equipo" class="custom-input custom-margin-bottom"
+                    labelPlacement="floating" [counter]="true" placeholder="PachanGeo FC"
+                    [formControl]="teamForm.controls.name"></ion-input>
+
+                  <ion-input label="Codigo de invitación" class="custom-input custom-margin-bottom"
+                    labelPlacement="floating" [counter]="true" placeholder="PachanGeo FC" maxlength="20"
+                    [formControl]="teamForm.controls.invitationCode"></ion-input>
+
+                  <p>Tipo de Fútbol:</p>
+                  <ion-label> {{ teamForm.controls.favoriteFootballType.value }}</ion-label>
+                  <ion-select class="custom-select custom-margin-bottom" fill="outline"
+                    [formControl]="teamForm.controls.favoriteFootballType">
+                    <ion-select-option value="All-football">Todos</ion-select-option>
+                    <ion-select-option value="Futbol-5">Fútbol Sala</ion-select-option>
+                    <ion-select-option value="Futbol-7">Fútbol 7</ion-select-option>
+                    <ion-select-option value="Futbol-11">Fútbol 11</ion-select-option>
+                  </ion-select>
+
+                  <ion-button class="custom-button ion-padding" type="submit" expand="block"
+                    [disabled]="teamForm.invalid">Crear Equipo</ion-button>
+
+
+                </ion-card>
+              </form>
+
+            </ion-content>
+
+          </ng-template>
+
+        </ion-modal>
+      </ion-card>
+
+      <form [formGroup]="joinForm" class="ion-text-center" (ngSubmit)="joinSubmit()">
+        <ion-card class="ion-padding">
+
+          <p>Introduce el codigo de invitación del equipo al que quieres unirte.</p>
+
+          <ion-input label="Codigo de invitación" class="custom-input" labelPlacement="floating" [counter]="true"
+            [formControl]="joinForm.controls.invitationCode"></ion-input>
+
+          <ion-button class="custom-button ion-padding" id="Unirse-equipo" type="submit" expand="block"
+            [disabled]="joinForm.invalid">Unirse a
+            Equipo</ion-button>
+        </ion-card>
+      </form>
+
+    </div>
   </div>
+
+  <div class="con-equipo" *ngIf='isTeam'>
+
+    <ion-card class="ion-padding custom-team-card">
+
+      <ion-item lines="none ">
+        <ion-icon class="image-icon" slot="start" *ngIf="!team.photo" (click)="takeTeamPhoto()"
+          name="camera-outline"></ion-icon>
+        <ion-avatar class="custom-avatar" *ngIf="team.photo" slot="start">
+          <img class="image-icon" [src]="team.photo" (click)="takeTeamPhoto()" />
+        </ion-avatar>
+      </ion-item>
+
+      <ion-card-header class="custom-card-header">
+        <ion-card-title>{{team.name}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Codigo de Invitación: {{team.invitationCode}}</p>
+        <p>Tipo de fútbol preferido: {{team.favoriteFootballType}}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="ion-padding custom-card ">
+      <ion-card-header class="custom-card-header">
+        <ion-card-title>Jugadores</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-item class="custom-item" *ngFor="let player of team.users; let i = index">
+          <ion-label>{{i + 1}}. <span *ngIf="player.userId === user.userId">(Tú)<span
+                *ngIf="team.userIdTeamOwner === user.userId"> (Creador)
+              </span> </span> <br> <span>{{player.name}} <br> </span>
+            <span>Role: {{player.role}} <br> </span>
+            <span>Futbol Fav:{{player.favoriteFootballType}} <br> </span>
+          </ion-label>
+          <ion-avatar slot="start">
+            <img [src]="player.photo" alt="avatar" />
+          </ion-avatar>
+
+
+
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+
+
+  </div>
+
 </ion-content>
